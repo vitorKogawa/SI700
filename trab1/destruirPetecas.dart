@@ -8,6 +8,4 @@ destruirPetecas(numeroPetecas, numeroAmigos) => numeroPetecas % numeroAmigos;
 
 void main() {
   print(destruirPetecas(23, 4)); // 3
-  print(destruirPetecas(35, 6)); // 5
-  print(destruirPetecas(95, 19)); // 0
 }
