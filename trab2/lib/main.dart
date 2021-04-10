@@ -51,7 +51,6 @@ List<Widget> buildSquares() {
           decoration: BoxDecoration(color: Colors.green),
           height: 100,
           width: 60,
-          // child: Text("$i$j"),
           key: Key("$i$j"),
           margin: EdgeInsets.all(5)));
     }
@@ -60,13 +59,11 @@ List<Widget> buildSquares() {
   for (int i = 0; i < thorPath.length; i++) {
     for (int j = 0; j < squares.length; j++) {
       var aux = Key("${thorPath[i][0]}${thorPath[i][1]}");
-      print(squares[j].key);
       if (aux == squares[j].key) {
         squares[j] = Container(
           decoration: BoxDecoration(color: Colors.blue),
           height: 100,
           width: 60,
-          // child: Text("thor"),
           margin: EdgeInsets.all(5));
       }
     }
