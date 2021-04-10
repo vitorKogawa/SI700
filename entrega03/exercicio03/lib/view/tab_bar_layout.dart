@@ -18,21 +18,21 @@ class MyTabBar extends StatelessWidget {
           initialIndex: 0,
           child: Scaffold(
             appBar: AppBar(
-              title: Text("ApresentaçãoDuplasEProjeto"),
+              title: Text("Apresentação Duplas e Projeto"),
               bottom: TabBar(
                 // definir as telas
                 tabs: [
                   Tab(
                     child: Text('Enzo Fuji'),
-                    icon: Icon(Icons.people),
+                    icon: Icon(Icons.person),
                   ),
                   Tab(
                     child: Text('Vitor Roberto'),
-                    icon: Icon(Icons.people),
+                    icon: Icon(Icons.person),
                   ),
                   Tab(
                     child: Text('Project'),
-                    icon: Icon(Icons.preview),
+                    icon: Icon(Icons.bookmark),
                   )
                 ],
               ),
