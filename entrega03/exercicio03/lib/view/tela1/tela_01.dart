@@ -31,7 +31,7 @@ Widget enzoScreen() {
         Text("Enzo Juniti Fujimoto",
             textAlign: TextAlign.justify,
             style: TextStyle(
-                fontSize: 40,
+                fontSize: 30,
                 fontWeight: FontWeight.bold,
                 letterSpacing: 2,
                 color: Colors.blueAccent)),
