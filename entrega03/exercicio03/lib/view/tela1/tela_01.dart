@@ -11,9 +11,6 @@ Widget enzoScreen() {
   return SingleChildScrollView(
     child: Column(
       children: [
-        Text(
-          " ",
-        ),
         Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(55),
@@ -25,11 +22,8 @@ Widget enzoScreen() {
                 width: 180,
               )),
         ),
-        Text(
-          " ",
-        ),
         Text("Enzo Juniti Fujimoto",
-            textAlign: TextAlign.justify,
+            textAlign: TextAlign.left,
             style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -41,9 +35,6 @@ Widget enzoScreen() {
                 fontWeight: FontWeight.normal,
                 letterSpacing: 5,
                 color: Colors.blueAccent)),
-        Text(
-          " ",
-        ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

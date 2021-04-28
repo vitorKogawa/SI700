@@ -6,9 +6,6 @@ class SecondView extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Text(
-            " ",
-          ),
           Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(55),
@@ -19,9 +16,6 @@ class SecondView extends StatelessWidget {
                   'assets/images/perfil_vitor.jpg',
                   width: 180,
                 )),
-          ),
-          Text(
-            " ",
           ),
           Text("Vitor Roberto Kogawa de Moraes",
               style: TextStyle(
@@ -55,10 +49,7 @@ class SecondView extends StatelessWidget {
             ],
           ),
           Text(
-            " ",
-          ),
-          Text(
-            "Atualmente graduando em sistemas de informação na Faculdade de Tecnoogia da Unicamp. Tenho 21 anos e atualmente estou atuando como estagiário no departamento de engenharia de software da Avanade.",
+            "Atualmente graduando em sistemas de informação na Faculdade de Tecnologia da Unicamp. Tenho 21 anos e atualmente estou atuando como estagiário no departamento de engenharia de software da Avanade.",
             style: TextStyle(
                 fontSize: 20,
                 color: Colors.deepOrangeAccent,
@@ -92,7 +83,7 @@ class SecondView extends StatelessWidget {
                 ],
               ),
               Text(
-                "\nGosto de escrever, escutar música, e cozinhar.",
+                "\nGosto de ler, escutar música, cozinhar e estudar novas tecnologias.",
                 style: TextStyle(
                     fontSize: 20,
                     color: Colors.deepOrangeAccent,

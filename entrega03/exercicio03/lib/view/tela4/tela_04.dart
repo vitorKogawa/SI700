@@ -143,20 +143,20 @@ Widget onecheck() {
       )),
       Row(
         children: [
-          myCheckbox(),
+          // myCheckbox(),
         ],
       )
     ],
   );
 }
 
-Widget myCheckbox() {
-  return Checkbox(
-    value: completeForm.checkBoxValue,
-    onChanged: (bool value) {
-      setState(() {
-        completeForm.checkBoxValue = value;
-      });
-    },
-  );
-}
+// Widget myCheckbox() {
+//   return Checkbox(
+//     value: completeForm.checkBoxValue,
+//     onChanged: (bool value) {
+//       setState(() {
+//         completeForm.checkBoxValue = value;
+//       });
+//     },
+//   );
+// }
