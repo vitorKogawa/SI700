@@ -2,6 +2,7 @@
 
 // realizar os imports das outras pastas e arquivos
 
+import 'package:exercicio03/customWidgets/CustomDrawer.dart';
 import 'package:exercicio03/view/login/LoginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:exercicio03/view/tela1/tela_01.dart';
@@ -16,6 +17,7 @@ class Navigation extends StatelessWidget {
       length: 3, // dividir a navegação em 3 partes
       initialIndex: 0,
       child: Scaffold(
+        drawer: CustomDrawer(),
         appBar: AppBar(
           actions: [CustomSwitch()],
           title: Text("Apresentação Duplas e Projeto"),
@@ -39,11 +41,7 @@ class Navigation extends StatelessWidget {
           ),
         ),
         body: TabBarView(
-          children: [
-            FirstView(),
-            SecondView(),
-            ThirdView()
-          ],
+          children: [FirstView(), SecondView(), ThirdView()],
         ),
       ),
     );

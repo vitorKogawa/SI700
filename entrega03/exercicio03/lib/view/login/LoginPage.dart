@@ -1,3 +1,4 @@
+import 'package:exercicio03/customWidgets/CustomDrawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,13 +11,19 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginPageState extends State<LoginPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: FormLoginBody());
+  }
+}
+
+class FormLoginBody extends StatelessWidget {
   String email = '';
   String password = '';
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SingleChildScrollView(
+    return SingleChildScrollView(
       child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -73,6 +80,6 @@ class LoginPageState extends State<LoginPage> {
               ],
             ),
           )),
-    ));
+    );
   }
 }
