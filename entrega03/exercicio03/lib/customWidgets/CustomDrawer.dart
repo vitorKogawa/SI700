@@ -8,6 +8,9 @@ class CustomDrawer extends StatelessWidget {
       child: Column(
         children: [
           UserAccountsDrawerHeader(
+              currentAccountPicture: ClipRRect(
+                  borderRadius: BorderRadius.circular(100.00),
+                  child: Image.asset('assets/images/enzo.jpg')),
               accountName: Text('Nome do Usuário'),
               accountEmail: Text('usuario@email.com')),
           ListTile(
@@ -23,6 +26,15 @@ class CustomDrawer extends StatelessWidget {
             subtitle: Text('Sobre o App'),
             onTap: () => print(
                 'clicou em Sobre o App.'), //aqui da pra direcionar para outra rota.
+          ),
+          ListTile(
+            leading: Icon(Icons.logout),
+            title: Text('Sair'),
+            subtitle: Text('Logout'),
+            onTap: () => {
+              print('clicou em Logout.'),
+              Navigator.pushReplacementNamed(context, '/')
+            }, //aqui da pra direcionar para outra rota.
           )
         ],
       ),

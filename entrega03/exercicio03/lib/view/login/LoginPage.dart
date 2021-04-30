@@ -76,6 +76,23 @@ class FormLoginBody extends StatelessWidget {
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
                                       side: BorderSide(color: Colors.blue)))),
+                    )),
+                SizedBox(height: 20),
+                SizedBox(
+                    width: 200.00,
+                    height: 50.00,
+                    child: ElevatedButton(
+                      onPressed: () => Navigator.pushReplacementNamed(
+                          context, '/cadastro-usuario'),
+                      child: Text('Criar Conta', style: TextStyle(color: Colors.black),),
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Colors.white),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                      side: BorderSide(color: Colors.blue)))),
                     ))
               ],
             ),
