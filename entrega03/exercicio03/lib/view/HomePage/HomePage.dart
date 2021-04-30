@@ -25,9 +25,12 @@ class HomePageState extends State<HomePageWidget> {
                   child: Row(
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.network(
-                    'https://m.media-amazon.com/images/I/51Spxy9Xl0L.jpg',
-                    width: 150,
+                  GestureDetector(
+                    onTap: () => Navigator.pushReplacementNamed(context, '/see-book'),
+                    child: Image.network(
+                      'https://m.media-amazon.com/images/I/51Spxy9Xl0L.jpg',
+                      width: 150,
+                    ),
                   ),
                   Card(
                       shape: RoundedRectangleBorder(
@@ -180,7 +183,7 @@ class HomePageState extends State<HomePageWidget> {
             ],
           )),
     );
-  } 
+  }
 }
 
 // https://images-na.ssl-images-amazon.com/images/I/817REipBzQL.jpg

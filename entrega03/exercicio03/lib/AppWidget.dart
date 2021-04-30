@@ -24,6 +24,7 @@ class AppWidget extends StatelessWidget {
               '/home': (context) => HomePageWidget(),
               '/about': (context) => SobreWidget(),
               '/cadastro-usuario': (context) => CadastroUsuario(),
+              // '/see-book': (context) => 
             },
           );
         });

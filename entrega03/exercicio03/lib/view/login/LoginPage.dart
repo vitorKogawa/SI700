@@ -58,17 +58,7 @@ class FormLoginBody extends StatelessWidget {
                     width: 200.00,
                     height: 50.00,
                     child: ElevatedButton(
-                      onPressed: () {
-                        print(email);
-                        print(password);
-                        if ((email == 'vitor@email.com' ||
-                                email == 'enzo@email.com') &&
-                            password == '123') {
-                          Navigator.pushReplacementNamed(context, '/home');
-                        } else {
-                          Navigator.pushReplacementNamed(context, '/');
-                        }
-                      },
+                      onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
                       child: Text('Logar'),
                       style: ButtonStyle(
                           shape:
