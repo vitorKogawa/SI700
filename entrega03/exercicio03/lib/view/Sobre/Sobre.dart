@@ -3,14 +3,15 @@
 // realizar os imports das outras pastas e arquivos
 
 import 'package:exercicio03/customWidgets/CustomDrawer.dart';
-import 'package:exercicio03/view/login/LoginPage.dart';
+import 'package:exercicio03/customWidgets/CustomSwitch.dart';
+// import 'package:exercicio03/view/login/LoginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:exercicio03/view/tela1/tela_01.dart';
 import 'package:exercicio03/view/tela2/tela_02.dart';
 import 'package:exercicio03/view/tela3/tela_03.dart';
-import 'package:exercicio03/controller/AppController.dart';
+// import 'package:exercicio03/controller/AppController.dart';
 
-class Navigation extends StatelessWidget {
+class SobreWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -45,14 +46,5 @@ class Navigation extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class CustomSwitch extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Switch(
-        value: AppController.instance.isDarkTheme,
-        onChanged: (value) => AppController.instance.changeTheme());
   }
 }

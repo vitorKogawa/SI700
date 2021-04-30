@@ -1,5 +1,6 @@
 import 'package:exercicio03/controller/AppController.dart';
-import 'package:exercicio03/view/Navigation.dart';
+import 'package:exercicio03/view/HomePage/HomePage.dart';
+import 'package:exercicio03/view/Sobre/Sobre.dart';
 import 'package:exercicio03/view/cadastroUsuario/CadastroUsuario.dart';
 import 'package:exercicio03/view/login/LoginPage.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,8 +21,9 @@ class AppWidget extends StatelessWidget {
             initialRoute: '/',
             routes: {
               '/': (context) => LoginPage(),
-              '/menu': (context) => Navigation(),
-              '/cadastro-usuario': (context) => CadastroUsuario()
+              '/home': (context) => HomePageWidget(),
+              '/about': (context) => SobreWidget(),
+              '/cadastro-usuario': (context) => CadastroUsuario(),
             },
           );
         });

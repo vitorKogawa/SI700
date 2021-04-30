@@ -17,24 +17,19 @@ class CustomDrawer extends StatelessWidget {
             leading: Icon(Icons.home),
             title: Text('Home'),
             subtitle: Text('Tela de início'),
-            onTap: () => print(
-                'clicou na Home.'), //aqui da pra direcionar para outra rota.
+            onTap: () => Navigator.pushReplacementNamed(context, '/home'),
           ),
           ListTile(
             leading: Icon(Icons.people),
             title: Text('Sobre'),
             subtitle: Text('Sobre o App'),
-            onTap: () => print(
-                'clicou em Sobre o App.'), //aqui da pra direcionar para outra rota.
+            onTap: () => Navigator.pushReplacementNamed(context, '/about'), 
           ),
           ListTile(
             leading: Icon(Icons.logout),
             title: Text('Sair'),
             subtitle: Text('Logout'),
-            onTap: () => {
-              print('clicou em Logout.'),
-              Navigator.pushReplacementNamed(context, '/')
-            }, //aqui da pra direcionar para outra rota.
+            onTap: () => Navigator.pushReplacementNamed(context, '/')
           )
         ],
       ),

@@ -64,7 +64,7 @@ class FormLoginBody extends StatelessWidget {
                         if ((email == 'vitor@email.com' ||
                                 email == 'enzo@email.com') &&
                             password == '123') {
-                          Navigator.pushReplacementNamed(context, '/menu');
+                          Navigator.pushReplacementNamed(context, '/home');
                         } else {
                           Navigator.pushReplacementNamed(context, '/');
                         }

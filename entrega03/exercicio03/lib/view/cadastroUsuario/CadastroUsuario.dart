@@ -63,16 +63,16 @@ class CadastroUsuarioBody extends StatelessWidget {
                       labelText: 'Confirm Password',
                       border: OutlineInputBorder()),
                 ),
-                DropdownButton(
-                  value: this.gender,
-                  onChanged: (currentValue) => {
-                    setState
-                  },
-                  items: this.genderItems.map<DropdownMenuItem<String>>((gen) {
-                    return DropdownMenuItem<String>(
-                        value: gen, child: Text(gen));
-                  }).toList(),
-                ),
+                // DropdownButton(
+                //   value: this.gender,
+                //   onChanged: (currentValue) => {
+                //     setState(() => this.gender = currentValue)
+                //   },
+                //   items: this.genderItems.map<DropdownMenuItem<String>>((gen) {
+                //     return DropdownMenuItem<String>(
+                //         value: gen, child: Text(gen));
+                //   }).toList(),
+                // ),
                 SizedBox(
                     width: 200.00,
                     height: 50.00,
@@ -96,4 +96,6 @@ class CadastroUsuarioBody extends StatelessWidget {
               ],
             )));
   }
+
+  setState(Null Function() param0) {}
 }
