@@ -13,7 +13,7 @@ class HomePageState extends State<HomePageWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('HomePage')),
+      appBar: AppBar(title: Text('Estante de Livros')),
       drawer: CustomDrawer(),
       body: Container(
           width: double.infinity,
@@ -26,7 +26,8 @@ class HomePageState extends State<HomePageWidget> {
                 // mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   GestureDetector(
-                    onTap: () => Navigator.pushReplacementNamed(context, '/see-book'),
+                    onTap: () =>
+                        Navigator.pushReplacementNamed(context, '/see-book'),
                     child: Image.network(
                       'https://m.media-amazon.com/images/I/51Spxy9Xl0L.jpg',
                       width: 150,
