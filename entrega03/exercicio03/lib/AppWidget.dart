@@ -1,4 +1,5 @@
 import 'package:exercicio03/controller/AppController.dart';
+import 'package:exercicio03/view/DetalhesLivro/DetalhesLivro.dart';
 import 'package:exercicio03/view/HomePage/HomePage.dart';
 import 'package:exercicio03/view/Sobre/Sobre.dart';
 import 'package:exercicio03/view/cadastroUsuario/CadastroUsuario.dart';
@@ -24,7 +25,7 @@ class AppWidget extends StatelessWidget {
               '/home': (context) => HomePageWidget(),
               '/about': (context) => SobreWidget(),
               '/cadastro-usuario': (context) => CadastroUsuario(),
-              // '/see-book': (context) => 
+              '/see-book': (context) => DetalhesLivroWidget()
             },
           );
         });

@@ -1,3 +1,4 @@
+import 'package:exercicio03/customWidgets/CustomRadioListTileButtonsGender.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,8 @@ class CadastroUsuarioState extends State<CadastroUsuario> {
   }
 }
 
+enum Gender { masculino, feminino, outro }
+
 class CadastroUsuarioBody extends StatelessWidget {
   //melhorar isso aqui depois
   String email = '';
@@ -22,8 +25,7 @@ class CadastroUsuarioBody extends StatelessWidget {
   String lastName = '';
   String password = '';
   String confirmPassword = '';
-  String gender = 'Gender';
-  List<String> genderItems = ['Masculino', 'Feminino', 'Outro'];
+  bool termosDeUso = false;
 
   @override
   Widget build(BuildContext context) {
@@ -63,22 +65,19 @@ class CadastroUsuarioBody extends StatelessWidget {
                       labelText: 'Confirm Password',
                       border: OutlineInputBorder()),
                 ),
-                // DropdownButton(
-                //   value: this.gender,
-                //   onChanged: (currentValue) => {
-                //     setState(() => this.gender = currentValue)
-                //   },
-                //   items: this.genderItems.map<DropdownMenuItem<String>>((gen) {
-                //     return DropdownMenuItem<String>(
-                //         value: gen, child: Text(gen));
-                //   }).toList(),
-                // ),
+                RadioListTileButtonGenderWidget(),
+                CheckboxListTile(
+                    title: Text('Li e aceito os termos de uso'),
+                    value: termosDeUso,
+                    onChanged: (bool value) {
+                      setState(() => termosDeUso = value);
+                    }),
                 SizedBox(
                     width: 200.00,
                     height: 50.00,
                     child: ElevatedButton(
                       onPressed: () {
-                        print(this.gender);
+                        print('Cadastro concluído com sucesso.');
                       },
                       child: Text(
                         'Criar Conta',

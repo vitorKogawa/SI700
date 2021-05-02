@@ -44,7 +44,7 @@ class HomePageState extends State<HomePageWidget> {
                               onPressed: () => print('clicou em comprar'),
                               child: Text('Comprar')),
                           ElevatedButton(
-                              onPressed: () => print('clicou em favoritar'),
+                              onPressed: () => Navigator.pushReplacementNamed(context, '/see-book'),
                               child: Text('Favoritar')),
                         ],
                       )),
@@ -185,10 +185,3 @@ class HomePageState extends State<HomePageWidget> {
     );
   }
 }
-
-// https://images-na.ssl-images-amazon.com/images/I/817REipBzQL.jpg
-// https://images-na.ssl-images-amazon.com/images/I/91MkcSmcf2L.jpg
-// https://images-na.ssl-images-amazon.com/images/I/91tO3AZhkcL.jpg
-// https://m.media-amazon.com/images/I/51EZZWkTECL.jpg
-// https://images-na.ssl-images-amazon.com/images/I/81XoKNXIkZL.jpg
-// https://images-na.ssl-images-amazon.com/images/I/71Hx-WJHWFL.jpg
