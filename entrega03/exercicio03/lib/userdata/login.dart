@@ -4,6 +4,8 @@ class LoginData {
   String username;
   String password;
   bool passed = false;
+  bool inValue = false;
+  bool checkboxValue = false;
 
   // função que pegará os dados
   catchData() {

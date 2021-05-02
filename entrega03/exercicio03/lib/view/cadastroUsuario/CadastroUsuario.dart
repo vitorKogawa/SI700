@@ -30,6 +30,7 @@ class CadastroUsuarioBody extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(title: Text('Cadastro')),
         body: Container(
+            padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Column(
@@ -38,30 +39,44 @@ class CadastroUsuarioBody extends StatelessWidget {
                   onChanged: (value) => email = value,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                      labelText: 'Email', border: OutlineInputBorder()),
+                      labelText: 'Email',
+                      border: OutlineInputBorder(),
+                      icon: Icon(Icons.email)),
+                  style: TextStyle(fontSize: 15),
                 ),
                 TextField(
                   onChanged: (value) => firstName = value,
                   decoration: InputDecoration(
-                      labelText: 'First Name', border: OutlineInputBorder()),
+                      labelText: 'First Name',
+                      border: OutlineInputBorder(),
+                      icon: Icon(Icons.person)),
+                  style: TextStyle(fontSize: 15),
                 ),
                 TextField(
                   onChanged: (value) => lastName = value,
                   decoration: InputDecoration(
-                      labelText: 'Last Name', border: OutlineInputBorder()),
+                      labelText: 'Last Name',
+                      border: OutlineInputBorder(),
+                      icon: Icon(Icons.person_add_rounded)),
+                  style: TextStyle(fontSize: 15),
                 ),
                 TextField(
                   onChanged: (value) => email = value,
                   obscureText: true,
                   decoration: InputDecoration(
-                      labelText: 'Password', border: OutlineInputBorder()),
+                      labelText: 'Password',
+                      border: OutlineInputBorder(),
+                      icon: Icon(Icons.security)),
+                  style: TextStyle(fontSize: 15),
                 ),
                 TextField(
                   onChanged: (value) => email = value,
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: 'Confirm Password',
-                      border: OutlineInputBorder()),
+                      border: OutlineInputBorder(),
+                      icon: Icon(Icons.security_sharp)),
+                  style: TextStyle(fontSize: 15),
                 ),
                 // DropdownButton(
                 //   value: this.gender,

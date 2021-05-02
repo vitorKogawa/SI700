@@ -1,7 +1,8 @@
-import 'package:exercicio03/customWidgets/CustomDrawer.dart';
+//import 'package:exercicio03/customWidgets/CustomDrawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+//import 'package:exercicio03/userdata/login.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -44,21 +45,27 @@ class FormLoginBody extends StatelessWidget {
                   onChanged: (value) => email = value,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                      labelText: 'Email', border: OutlineInputBorder()),
+                    labelText: 'Email',
+                    border: OutlineInputBorder(),
+                    icon: Icon(Icons.person),
+                  ),
                 ),
                 SizedBox(height: 20),
                 TextField(
                   onChanged: (value) => password = value,
                   obscureText: true,
                   decoration: InputDecoration(
-                      labelText: 'Password', border: OutlineInputBorder()),
+                      labelText: 'Password',
+                      border: OutlineInputBorder(),
+                      icon: Icon(Icons.security)),
                 ),
                 SizedBox(height: 20),
                 SizedBox(
                     width: 200.00,
                     height: 50.00,
                     child: ElevatedButton(
-                      onPressed: () => Navigator.pushReplacementNamed(context, '/home'),
+                      onPressed: () =>
+                          Navigator.pushReplacementNamed(context, '/home'),
                       child: Text('Logar'),
                       style: ButtonStyle(
                           shape:
@@ -74,19 +81,42 @@ class FormLoginBody extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () => Navigator.pushReplacementNamed(
                           context, '/cadastro-usuario'),
-                      child: Text('Criar Conta', style: TextStyle(color: Colors.black),),
+                      child: Text(
+                        'Criar Conta',
+                        style: TextStyle(color: Colors.black),
+                      ),
                       style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Colors.white),
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.white),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30.0),
                                       side: BorderSide(color: Colors.blue)))),
-                    ))
+                    )),
+                /* Row(
+                  children: [
+                    Flexible(
+                        child: Text(
+                      "Ok",
+                      style: TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.normal),
+                    )),
+                    Checkbox(
+                      onChanged: (bool inValue) {
+                        setState(() {
+                          LoginData.checkboxValue = inValue;
+                        });
+                      },
+                      value: LoginData.checkboxValue,
+                    )
+                  ],
+                ) */
               ],
             ),
           )),
     );
   }
+
+  void setState(Null Function() param0) {}
 }
