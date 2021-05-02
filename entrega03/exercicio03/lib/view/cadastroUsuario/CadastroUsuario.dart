@@ -32,52 +32,52 @@ class CadastroUsuarioBody extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(title: Text('Cadastro')),
         body: Container(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            // padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
+            // width: MediaQuery.of(context).size.width,
+            // height: MediaQuery.of(context).size.height,
             child: Column(
               children: [
                 TextField(
                   onChanged: (value) => email = value,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                      labelText: 'Email',
-                      border: OutlineInputBorder(),
-                      icon: Icon(Icons.email)),
+                    labelText: 'Email',
+                    border: OutlineInputBorder(),
+                  ),
                   style: TextStyle(fontSize: 15),
                 ),
                 TextField(
                   onChanged: (value) => firstName = value,
                   decoration: InputDecoration(
-                      labelText: 'First Name',
-                      border: OutlineInputBorder(),
-                      icon: Icon(Icons.person)),
+                    labelText: 'First Name',
+                    border: OutlineInputBorder(),
+                  ),
                   style: TextStyle(fontSize: 15),
                 ),
                 TextField(
                   onChanged: (value) => lastName = value,
                   decoration: InputDecoration(
-                      labelText: 'Last Name',
-                      border: OutlineInputBorder(),
-                      icon: Icon(Icons.person_add_rounded)),
+                    labelText: 'Last Name',
+                    border: OutlineInputBorder(),
+                  ),
                   style: TextStyle(fontSize: 15),
                 ),
                 TextField(
                   onChanged: (value) => email = value,
                   obscureText: true,
                   decoration: InputDecoration(
-                      labelText: 'Password',
-                      border: OutlineInputBorder(),
-                      icon: Icon(Icons.security)),
+                    labelText: 'Password',
+                    border: OutlineInputBorder(),
+                  ),
                   style: TextStyle(fontSize: 15),
                 ),
                 TextField(
                   onChanged: (value) => email = value,
                   obscureText: true,
                   decoration: InputDecoration(
-                      labelText: 'Confirm Password',
-                      border: OutlineInputBorder(),
-                      icon: Icon(Icons.security_sharp)),
+                    labelText: 'Confirm Password',
+                    border: OutlineInputBorder(),
+                  ),
                   style: TextStyle(fontSize: 15),
                 ),
                 RadioListTileButtonGenderWidget(),
@@ -92,7 +92,16 @@ class CadastroUsuarioBody extends StatelessWidget {
                     height: 50.00,
                     child: ElevatedButton(
                       onPressed: () {
-                        print('Cadastro concluído com sucesso.');
+                        final snackBar = SnackBar(
+                          content: Text('Cadastro realizado com sucesso.'),
+                          action: SnackBarAction(
+                            label: 'OK',
+                            onPressed: () {
+                              // Some code to undo the change.
+                            },
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       },
                       child: Text(
                         'Criar Conta',
