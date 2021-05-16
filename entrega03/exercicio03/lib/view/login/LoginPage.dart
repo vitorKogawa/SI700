@@ -46,7 +46,7 @@ class FormLoginBody extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     labelText: 'Email',
-                    border: OutlineInputBorder(),
+                    border: UnderlineInputBorder(),
                     icon: Icon(Icons.person),
                   ),
                 ),
@@ -56,7 +56,7 @@ class FormLoginBody extends StatelessWidget {
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: 'Password',
-                      border: OutlineInputBorder(),
+                      border: UnderlineInputBorder(),
                       icon: Icon(Icons.security)),
                 ),
                 SizedBox(height: 20),
@@ -65,7 +65,7 @@ class FormLoginBody extends StatelessWidget {
                     height: 50.00,
                     child: ElevatedButton(
                       onPressed: () =>
-                          Navigator.pushReplacementNamed(context, '/home'),
+                          Navigator.pushNamed(context, '/home'),
                       child: Text('Logar'),
                       style: ButtonStyle(
                           shape:
