@@ -1,15 +1,17 @@
+// import 'package:exercicio03/bloc/user_bloc.dart';
 import 'package:exercicio03/customWidgets/CustomDrawer.dart';
+import 'package:exercicio03/models/User.dart';
+import 'package:exercicio03/routes/AppRoutes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePageWidget extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  State<HomePageWidget> createState() {
-    return HomePageState();
-  }
+  State<HomePage> createState() => HomePageState();
 }
 
-class HomePageState extends State<HomePageWidget> {
+class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +29,7 @@ class HomePageState extends State<HomePageWidget> {
                 children: <Widget>[
                   GestureDetector(
                     onTap: () =>
-                        Navigator.pushReplacementNamed(context, '/see-book'),
+                        Navigator.pushNamed(context, AppRoutes.DETALHES_LIVRO),
                     child: Image.network(
                       'https://m.media-amazon.com/images/I/51Spxy9Xl0L.jpg',
                       width: 150,
@@ -45,7 +47,8 @@ class HomePageState extends State<HomePageWidget> {
                               onPressed: () => print('clicou em comprar'),
                               child: Text('Comprar')),
                           ElevatedButton(
-                              onPressed: () => Navigator.pushReplacementNamed(context, '/see-book'),
+                              onPressed: () => Navigator.pushNamed(
+                                  context, AppRoutes.DETALHES_LIVRO),
                               child: Text('Favoritar')),
                         ],
                       )),

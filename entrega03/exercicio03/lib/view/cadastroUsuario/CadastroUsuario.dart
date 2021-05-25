@@ -1,30 +1,30 @@
-import 'package:exercicio03/customWidgets/CustomRadioListTileButtonsGender.dart';
+import 'package:exercicio03/bloc/UserBloc.dart';
+// import 'package:exercicio03/bloc/user_bloc.dart';
+// import 'package:exercicio03/customWidgets/CustomRadioListTileButtonsGender.dart';
+import 'package:exercicio03/models/User.dart';
+import 'package:exercicio03/routes/AppRoutes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CadastroUsuario extends StatefulWidget {
-  @override
-  State<CadastroUsuario> createState() {
-    return CadastroUsuarioState();
-  }
-}
+  final String errorMessage;
 
-class CadastroUsuarioState extends State<CadastroUsuario> {
+  CadastroUsuario({this.errorMessage});
+
   @override
-  Widget build(BuildContext context) {
-    return CadastroUsuarioBody();
-  }
+  State<CadastroUsuario> createState() => CadastroUsuarioState();
 }
 
 enum Gender { masculino, feminino, outro }
 
-class CadastroUsuarioBody extends StatelessWidget {
-  //melhorar isso aqui depois
+class CadastroUsuarioState extends State<CadastroUsuario> {
+  UserBloc bloc = UserBloc();
+
   String email = '';
   String firstName = '';
   String lastName = '';
   String password = '';
-  String confirmPassword = '';
   bool termosDeUso = false;
 
   @override
@@ -36,8 +36,21 @@ class CadastroUsuarioBody extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              StreamBuilder<int>(
+                stream: bloc.output,
+                initialData: 0,
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Center(
+                      child: Text("Erro ao cadastrar usuário"),
+                    );
+                  } else {
+                    return SizedBox.shrink();
+                  }
+                },
+              ),
               TextField(
-                onChanged: (value) => email = value,
+                onChanged: (value) => this.email = value,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                     labelText: 'Email',
@@ -46,7 +59,7 @@ class CadastroUsuarioBody extends StatelessWidget {
                 style: TextStyle(fontSize: 15),
               ),
               TextField(
-                onChanged: (value) => firstName = value,
+                onChanged: (value) => this.firstName = value,
                 decoration: InputDecoration(
                     labelText: 'First Name',
                     border: UnderlineInputBorder(),
@@ -54,7 +67,7 @@ class CadastroUsuarioBody extends StatelessWidget {
                 style: TextStyle(fontSize: 15),
               ),
               TextField(
-                onChanged: (value) => lastName = value,
+                onChanged: (value) => this.lastName = value,
                 decoration: InputDecoration(
                     labelText: 'Last Name',
                     border: UnderlineInputBorder(),
@@ -62,7 +75,7 @@ class CadastroUsuarioBody extends StatelessWidget {
                 style: TextStyle(fontSize: 15),
               ),
               TextField(
-                onChanged: (value) => email = value,
+                onChanged: (value) => this.password = value,
                 obscureText: true,
                 decoration: InputDecoration(
                     labelText: 'Password',
@@ -70,37 +83,25 @@ class CadastroUsuarioBody extends StatelessWidget {
                     icon: Icon(Icons.security)),
                 style: TextStyle(fontSize: 15),
               ),
-              TextField(
-                onChanged: (value) => email = value,
-                obscureText: true,
-                decoration: InputDecoration(
-                    labelText: 'Confirm Password',
-                    border: UnderlineInputBorder(),
-                    icon: Icon(Icons.security_sharp)),
-                style: TextStyle(fontSize: 15),
+              SizedBox(
+                height: 20,
               ),
-              RadioListTileButtonGenderWidget(),
-              CheckboxListTile(
-                  title: Text('Li e aceito os termos de uso'),
-                  value: termosDeUso,
-                  onChanged: (bool value) {
-                    setState(() => termosDeUso = value);
-                  }),
+              widget.errorMessage == null
+                  ? SizedBox.shrink()
+                  : Text(widget.errorMessage),
+              SizedBox(
+                height: 20,
+              ),
               SizedBox(
                   width: 200.00,
                   height: 50.00,
                   child: ElevatedButton(
                     onPressed: () {
-                      final snackBar = SnackBar(
-                        content: Text('Cadastro realizado com sucesso.'),
-                        action: SnackBarAction(
-                          label: 'OK',
-                          onPressed: () {
-                            print('Enviar dados para o banco.');
-                          },
-                        ),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      bloc.store(User(this.email, this.firstName, this.lastName,
+                          this.password));
+
+                      Navigator.pushNamed(
+                          context, AppRoutes.USUARIOS_CADASTRADOS);
                     },
                     child: Text(
                       'Criar Conta',
@@ -119,6 +120,4 @@ class CadastroUsuarioBody extends StatelessWidget {
           ),
         )));
   }
-
-  setState(Null Function() param0) {}
 }
