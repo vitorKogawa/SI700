@@ -1,4 +1,5 @@
 import 'package:exercicio03/controller/AppController.dart';
+import 'package:exercicio03/routes/AppRoutes.dart';
 import 'package:exercicio03/view/DetalhesLivro/DetalhesLivro.dart';
 import 'package:exercicio03/view/HomePage/HomePage.dart';
 import 'package:exercicio03/view/Sobre/Sobre.dart';
@@ -21,11 +22,11 @@ class AppWidget extends StatelessWidget {
                     : Brightness.light),
             initialRoute: '/',
             routes: {
-              '/': (context) => LoginPage(),
-              '/home': (context) => HomePageWidget(),
-              '/about': (context) => SobreWidget(),
-              '/cadastro-usuario': (context) => CadastroUsuario(),
-              '/see-book': (context) => DetalhesLivroWidget()
+              AppRoutes.LOGIN: (context) => LoginPage(),
+              AppRoutes.HOME: (context) => HomePageWidget(),
+              AppRoutes.ABOUT: (context) => SobreWidget(),
+              AppRoutes.USER_REGISTRATION: (context) => CadastroUsuario(),
+              AppRoutes.BOOK_DETAILS: (context) => DetalhesLivroWidget()
             },
           );
         });
