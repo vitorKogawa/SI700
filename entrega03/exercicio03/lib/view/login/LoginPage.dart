@@ -1,4 +1,5 @@
 //import 'package:exercicio03/customWidgets/CustomDrawer.dart';
+import 'package:exercicio03/routes/AppRoutes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -65,7 +66,7 @@ class FormLoginBody extends StatelessWidget {
                     height: 50.00,
                     child: ElevatedButton(
                       onPressed: () =>
-                          Navigator.pushNamed(context, '/home'),
+                          Navigator.pushNamed(context, AppRoutes.HOME),
                       child: Text('Logar'),
                       style: ButtonStyle(
                           shape:
@@ -79,8 +80,8 @@ class FormLoginBody extends StatelessWidget {
                     width: 200.00,
                     height: 50.00,
                     child: ElevatedButton(
-                      onPressed: () => Navigator.pushReplacementNamed(
-                          context, '/cadastro-usuario'),
+                      onPressed: () => Navigator.pushNamed(
+                          context, AppRoutes.USER_REGISTRATION),
                       child: Text(
                         'Criar Conta',
                         style: TextStyle(color: Colors.black),
