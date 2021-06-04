@@ -1,3 +1,4 @@
+import 'package:exercicio03/routes/AppRoutes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,20 +18,19 @@ class CustomDrawer extends StatelessWidget {
             leading: Icon(Icons.home),
             title: Text('Home'),
             subtitle: Text('Tela de início'),
-            onTap: () => Navigator.pushReplacementNamed(context, '/home'),
+            onTap: () => Navigator.pushNamed(context, AppRoutes.HOME),
           ),
           ListTile(
             leading: Icon(Icons.people),
             title: Text('Sobre'),
             subtitle: Text('Sobre o App'),
-            onTap: () => Navigator.pushReplacementNamed(context, '/about'), 
+            onTap: () => Navigator.pushNamed(context, AppRoutes.ABOUT),
           ),
           ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Sair'),
-            subtitle: Text('Logout'),
-            onTap: () => Navigator.pushReplacementNamed(context, '/')
-          )
+              leading: Icon(Icons.logout),
+              title: Text('Sair'),
+              subtitle: Text('Logout'),
+              onTap: () => Navigator.pushNamed(context, AppRoutes.LOGIN))
         ],
       ),
     );
