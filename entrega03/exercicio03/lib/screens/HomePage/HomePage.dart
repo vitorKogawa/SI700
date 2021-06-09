@@ -1,15 +1,15 @@
-import 'package:exercicio03/customWidgets/CustomDrawer.dart';
+import 'package:exercicio03/widget/core/CustomDrawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomePageWidget extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   @override
-  State<HomePageWidget> createState() {
+  State<HomeScreen> createState() {
     return HomePageState();
   }
 }
 
-class HomePageState extends State<HomePageWidget> {
+class HomePageState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

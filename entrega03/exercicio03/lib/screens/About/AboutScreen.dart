@@ -1,21 +1,15 @@
-// Construção do Tab Bar - Barra de Navegação
-
-// realizar os imports das outras pastas e arquivos
-
-import 'package:exercicio03/customWidgets/CustomDrawer.dart';
-import 'package:exercicio03/customWidgets/CustomSwitch.dart';
-// import 'package:exercicio03/view/login/LoginPage.dart';
+import 'package:exercicio03/screens/About/tela1/tela_01.dart';
+import 'package:exercicio03/screens/About/tela2/tela_02.dart';
+import 'package:exercicio03/screens/About/tela3/tela_03.dart';
+import 'package:exercicio03/widget/core/CustomDrawer.dart';
+import 'package:exercicio03/widget/core/CustomSwitch.dart';
 import 'package:flutter/material.dart';
-import 'package:exercicio03/view/tela1/tela_01.dart';
-import 'package:exercicio03/view/tela2/tela_02.dart';
-import 'package:exercicio03/view/tela3/tela_03.dart';
-// import 'package:exercicio03/controller/AppController.dart';
 
-class SobreWidget extends StatelessWidget {
+class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3, // dividir a navegação em 3 partes
+      length: 3,
       initialIndex: 0,
       child: Scaffold(
         drawer: CustomDrawer(),
@@ -24,7 +18,6 @@ class SobreWidget extends StatelessWidget {
           title: Text("Apresentação Duplas e Projeto"),
           bottom: TabBar(
             isScrollable: false,
-            // definir as telas
             tabs: [
               Tab(
                 child: Text('Enzo'),

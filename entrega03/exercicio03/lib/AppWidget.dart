@@ -1,33 +1,37 @@
-import 'package:exercicio03/controller/AppController.dart';
-import 'package:exercicio03/view/DetalhesLivro/DetalhesLivro.dart';
-import 'package:exercicio03/view/HomePage/HomePage.dart';
-import 'package:exercicio03/view/Sobre/Sobre.dart';
-import 'package:exercicio03/view/cadastroUsuario/CadastroUsuario.dart';
-import 'package:exercicio03/view/login/LoginPage.dart';
+import 'package:exercicio03/controller/DarkModeController.dart';
+import 'package:exercicio03/routes/AppRoutes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:exercicio03/screens/Login/LoginScreen.dart';
+import 'package:exercicio03/screens/HomePage/HomePage.dart';
+import 'package:exercicio03/screens/About/AboutScreen.dart';
+import 'package:exercicio03/screens/User/Create/CadastroUsuario.dart';
+import 'package:exercicio03/screens/BookDetails/BookDetailsScreen.dart';
 
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: AppController.instance,
-        builder: (context, builder) {
-          return MaterialApp(
-            theme: ThemeData(
-                primarySwatch: Colors.blue,
-                brightness: AppController.instance.isDarkTheme
-                    ? Brightness.dark
-                    : Brightness.light),
-            initialRoute: '/',
-            routes: {
-              '/': (context) => LoginPage(),
-              '/home': (context) => HomePageWidget(),
-              '/about': (context) => SobreWidget(),
-              '/cadastro-usuario': (context) => CadastroUsuario(),
-              '/see-book': (context) => DetalhesLivroWidget()
-            },
-          );
-        });
+      animation: DarkModeController.instance,
+      builder: (context, builder) {
+        return MaterialApp(
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            brightness: DarkModeController.instance.isDarkTheme
+                ? Brightness.dark
+                : Brightness.light,
+          ),
+          home: LoginScreen(),
+          routes: {
+            AppRoutes.LOGIN: (context) => LoginScreen(),
+            AppRoutes.HOME: (context) => HomeScreen(),
+            AppRoutes.ABOUT: (context) => AboutScreen(),
+            AppRoutes.USER_REGISTRATION: (context) => UserRegisterScreen(),
+            AppRoutes.BOOK_DETAILS: (context) => BookDetailsScreen(),
+            // AppRoutes.USER_LIST: (context) => ListUser()
+          },
+        );
+      },
+    );
   }
 }

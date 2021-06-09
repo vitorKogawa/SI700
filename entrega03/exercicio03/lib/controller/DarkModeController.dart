@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class AppController extends ChangeNotifier {
-  //singleton
-  static AppController instance = AppController();
+class DarkModeController extends ChangeNotifier {
+  static DarkModeController instance = DarkModeController();
 
   bool isDarkTheme = false;
   changeTheme() {

@@ -1,15 +1,15 @@
-import 'package:exercicio03/customWidgets/CustomDrawer.dart';
+import 'package:exercicio03/widget/core/CustomDrawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class DetalhesLivroWidget extends StatefulWidget {
+class BookDetailsScreen extends StatefulWidget {
   @override
-  State<DetalhesLivroWidget> createState() {
-    return DetalhesLivroState();
+  State<BookDetailsScreen> createState() {
+    return BookDetailsScreenState();
   }
 }
 
-class DetalhesLivroState extends State<DetalhesLivroWidget> {
+class BookDetailsScreenState extends State<BookDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
