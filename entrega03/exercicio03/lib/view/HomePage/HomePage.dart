@@ -1,20 +1,28 @@
 import 'package:exercicio03/customWidgets/CustomDrawer.dart';
+import 'package:exercicio03/models/User.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomePageWidget extends StatefulWidget {
+class HomePage extends StatefulWidget {
+  String message;
+  User user;
+
+  HomePage({this.message, this.user});
+
   @override
-  State<HomePageWidget> createState() {
+  State<HomePage> createState() {
     return HomePageState();
   }
 }
 
-class HomePageState extends State<HomePageWidget> {
+class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Estante de Livros')),
-      drawer: CustomDrawer(),
+      appBar: AppBar(title: Text(widget.message)),
+      drawer: CustomDrawer(
+        user: widget.user,
+      ),
       body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -45,7 +53,8 @@ class HomePageState extends State<HomePageWidget> {
                               onPressed: () => print('clicou em comprar'),
                               child: Text('Comprar')),
                           ElevatedButton(
-                              onPressed: () => Navigator.pushReplacementNamed(context, '/see-book'),
+                              onPressed: () => Navigator.pushReplacementNamed(
+                                  context, '/see-book'),
                               child: Text('Favoritar')),
                         ],
                       )),

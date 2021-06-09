@@ -1,15 +1,24 @@
 //import 'package:exercicio03/customWidgets/CustomDrawer.dart';
+// import 'package:exercicio03/controller/UserController.dart';
 import 'package:exercicio03/controller/UserController.dart';
 import 'package:exercicio03/routes/AppRoutes.dart';
-import 'package:exercicio03/services/Api.dart';
+import 'package:exercicio03/view/Login/bloc/login_bloc.dart';
+// import 'package:exercicio03/services/Api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
+
+import 'package:http/http.dart';
 //import 'package:exercicio03/userdata/login.dart';
 
 class LoginPage extends StatefulWidget {
+  String errorMessage;
+
+  LoginPage({this.errorMessage});
+
   @override
   State<LoginPage> createState() {
     return LoginPageState();
@@ -26,13 +35,18 @@ class LoginPageState extends State<LoginPage> {
 }
 
 class FormLoginBody extends StatelessWidget {
-  String email = '';
-  String password = '';
-
-  UserController userController;
+  String email = 'fulano1@gmail.com';
+  String password = 'fulano1';
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<LoginBloc>(context);
+
+    void _authenticate({String email, String password}) {
+      final sigInEvent = SignInEvent(email: email, password: password);
+      bloc.add(sigInEvent);
+    }
+
     return SingleChildScrollView(
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
@@ -76,22 +90,8 @@ class FormLoginBody extends StatelessWidget {
                 width: 200.00,
                 height: 50.00,
                 child: ElevatedButton(
-                  onPressed: () async => {
-                    await http.post(
-                      "${Api.BASE_URL}/shared/login",
-                      headers: {"Content-type": "application/json"},
-                      body: convert.jsonEncode(
-                        {"email": email, "password": password},
-                      ),
-                    ),
-                    // if (response.statusCode == 200) {
-                    //   var jsonResponse =
-                    //       convert.jsonDecode(response.body) as Map<String, dynamic>;
-                    //   var itemCount = jsonResponse['totalItems'];
-                    //   print('Number of books about http: $itemCount.');
-                    // } else {
-                    //   print('Request failed with status: ${response.statusCode}.');
-                    // }
+                  onPressed: () => {
+                    _authenticate(email: this.email, password: this.password),
                   },
                   child: Text('Logar'),
                   style: ButtonStyle(
@@ -135,4 +135,18 @@ class FormLoginBody extends StatelessWidget {
   }
 
   void setState(Null Function() param0) {}
+
+  void login({String email, String password}) async {
+    Map<String, String> headers = {"Content-type": "application/json"};
+    String uri = "https://si700backend.herokuapp.com/shared/login";
+
+    Response response = await http.post(
+      Uri.parse(uri),
+      headers: headers,
+      body: convert.jsonEncode(
+        <String, String>{"email": this.email, "password": this.password},
+      ),
+    );
+    print(response.body);
+  }
 }
