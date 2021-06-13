@@ -1,11 +1,21 @@
 //import 'package:exercicio03/customWidgets/CustomDrawer.dart';
 import 'package:exercicio03/routes/AppRoutes.dart';
+import 'package:exercicio03/screens/HomePage/HomePage.dart';
+import 'package:exercicio03/screens/Login/bloc/login_bloc.dart';
+import 'package:exercicio03/screens/User/ListAllUsers/ListAllUsersScreen.dart';
+import 'package:exercicio03/screens/User/ListAllUsers/bloc/userlist_bloc.dart';
+import 'package:exercicio03/widget/core/CustomDrawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 //import 'package:exercicio03/userdata/login.dart';
 
 class LoginScreen extends StatefulWidget {
+  final String message;
+
+  LoginScreen({this.message});
+
   @override
   State<LoginScreen> createState() {
     return LoginScreenState();
@@ -19,6 +29,55 @@ class LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<LoginBloc>(context);
+
+    void _authenticate({String email, String password}) {
+      final loginSignInEvent =
+          LoginSignInEvent(email: email, password: password);
+      bloc.add(loginSignInEvent);
+
+      BlocProvider.of<UserlistBloc>(context).add(FetchUserListEvent());
+    }
+
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        if (state is LoginInitialState) {
+          return loginForm();
+        }
+
+        if (state is LoginNotAuthenticated) {
+          return loginForm();
+        }
+
+        if (state is LoginAuthenticatingState) {
+          return loadingScreen();
+        }
+
+        if (state is LoginAuthenticatedState) {
+          // return HomeScreen(user: state.user);
+          return ListAllUsersScreen();
+        }
+      },
+    );
+  }
+
+  Widget loadingScreen() {
+    return Scaffold(
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: <Widget>[
+            CircularProgressIndicator(),
+            SizedBox(height: 16),
+            Text('Checando Credenciais...')
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget loginForm() {
     return Scaffold(
       body: SingleChildScrollView(
         child: SizedBox(
@@ -37,7 +96,29 @@ class LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 20),
                   buildPassword(),
                   SizedBox(height: 20),
-                  buildBtnLogin(),
+                  SizedBox(
+                    width: 100.00,
+                    height: 50.00,
+                    child: ElevatedButton(
+                      onPressed: () => {
+                        formKey.currentState.save(),
+                        BlocProvider.of<LoginBloc>(context).add(
+                          LoginSignInEvent(
+                              email: 'fulano1@gmail.com', password: 'fulano1'),
+                        )
+                      },
+                      child: Text('Logar'),
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                            side: BorderSide(color: Colors.blue),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(height: 20),
                   buildUserRegister()
                 ],
@@ -81,32 +162,6 @@ class LoginScreenState extends State<LoginScreen> {
         labelText: 'Password',
         border: UnderlineInputBorder(),
         icon: Icon(Icons.security),
-      ),
-    );
-  }
-
-  Widget buildBtnLogin() {
-    return SizedBox(
-      width: 100.00,
-      height: 50.00,
-      child: ElevatedButton(
-        onPressed: () => {
-          formKey.currentState.save(),
-          print('Email: ${this.email}\nPassword: ${this.password}'),
-          // Navigator.pushNamed(
-          //   context,
-          //   AppRoutes.HOME,
-          // )
-        },
-        child: Text('Logar'),
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-              side: BorderSide(color: Colors.blue),
-            ),
-          ),
-        ),
       ),
     );
   }

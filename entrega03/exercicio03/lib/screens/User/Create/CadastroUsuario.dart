@@ -1,6 +1,10 @@
 import 'package:exercicio03/models/User.dart';
+import 'package:exercicio03/screens/Login/LoginScreen.dart';
+import 'package:exercicio03/screens/Login/bloc/login_bloc.dart';
+import 'package:exercicio03/screens/User/Create/bloc/registeruser_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UserRegisterScreen extends StatefulWidget {
   @override
@@ -16,8 +20,48 @@ class UserRegisterScreenState extends State<UserRegisterScreen> {
   String lastName = '';
   String password = '';
 
+  void _createUser({User user}) {
+    final createUserEvent = CreateUserEvent(user: user);
+    BlocProvider.of<UserRegisterBloc>(context).add(createUserEvent);
+  }
+
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<UserRegisterBloc, UserRegisterState>(
+      builder: (context, state) {
+        print(state);
+        if (state is UserRegisterInitialState) {
+          return userRegisterForm();
+        }
+
+        if (state is UserRegisteredState) {
+          return LoginScreen();
+        }
+
+        if (state is UserRegisterFailState) {
+          return userRegisterForm();
+        }
+
+        if (state is UserRegisteringState) {
+          return Scaffold(
+            body: Center(
+              child: Container(
+                child: Column(
+                  children: [
+                    CircularProgressIndicator(),
+                    SizedBox(height: 16),
+                    Text("Criando usuário..."),
+                  ],
+                ),
+              ),
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  Widget userRegisterForm() {
     return Scaffold(
       appBar: AppBar(
         title: Text("Cadastre-se"),
@@ -34,7 +78,8 @@ class UserRegisterScreenState extends State<UserRegisterScreen> {
             buildEmail(),
             SizedBox(height: 16),
             buildPassword(),
-            SizedBox(height: 16)
+            SizedBox(height: 16),
+            buildSubmit()
           ],
         ),
       ),
@@ -60,9 +105,8 @@ class UserRegisterScreenState extends State<UserRegisterScreen> {
       onSaved: (value) => setState(
         () => this.lastName = value,
       ),
-      keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        labelText: 'Email',
+        labelText: 'Last Name',
         border: UnderlineInputBorder(),
         icon: Icon(Icons.email),
       ),
@@ -87,10 +131,12 @@ class UserRegisterScreenState extends State<UserRegisterScreen> {
 
   Widget buildPassword() {
     return TextFormField(
-      onSaved: (value) => setState(() => this.password),
-      keyboardType: TextInputType.emailAddress,
+      onSaved: (value) => setState(
+        () => this.password,
+      ),
+      obscureText: true,
       decoration: InputDecoration(
-        labelText: 'Email',
+        labelText: 'Password',
         border: UnderlineInputBorder(),
         icon: Icon(Icons.email),
       ),
@@ -113,15 +159,7 @@ class UserRegisterScreenState extends State<UserRegisterScreen> {
               password: this.password,
               isEnabled: null);
 
-          print(newUser);
-
-          // var result = await userRepository.store(user: newUser);
-
-          // if (result) {
-          //   Navigator.of(context).pushNamed(AppRoutes.USER_LIST);
-          // } else {
-          //   print("erro");
-          // }
+          _createUser(user: newUser);
         },
         child: Text(
           'Criar Conta',
@@ -138,5 +176,20 @@ class UserRegisterScreenState extends State<UserRegisterScreen> {
         ),
       ),
     );
+  }
+
+  Widget CustomSnackbar({String message, bool isSucess}) {
+    final snackBar = SnackBar(
+      content: Text(message),
+      action: SnackBarAction(
+        label: 'OK',
+        onPressed: () {
+          // Some code to undo the change.
+        },
+      ),
+      backgroundColor: isSucess ? Colors.green : Colors.red,
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

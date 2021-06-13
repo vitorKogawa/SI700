@@ -8,13 +8,14 @@ class User extends Equatable {
   String password;
   bool isEnabled;
 
-  User(
-      {this.id,
-      this.firstName,
-      this.lastName,
-      this.email,
-      this.password,
-      this.isEnabled});
+  User({
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.password,
+    this.isEnabled,
+  });
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
