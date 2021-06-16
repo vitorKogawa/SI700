@@ -1,15 +1,12 @@
-// import 'package:exercicio03/controller/DarkModeController.dart';
 import 'package:exercicio03/routes/AppRoutes.dart';
-// import 'package:exercicio03/screens/Login/bloc/login_bloc.dart';
 import 'package:exercicio03/screens/User/ListAllUsers/ListAllUsersScreen.dart';
-// import 'package:exercicio03/screens/User/ListAllUsers/bloc/userlist_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:exercicio03/screens/Login/LoginScreen.dart';
 import 'package:exercicio03/screens/HomePage/HomePage.dart';
 import 'package:exercicio03/screens/About/AboutScreen.dart';
 import 'package:exercicio03/screens/User/Create/CadastroUsuario.dart';
-import 'package:exercicio03/screens/BookDetails/BookDetailsScreen.dart';
+import 'package:exercicio03/screens/Book/Details/BookDetailsScreen.dart';
 
 class AppWidget extends StatelessWidget {
   @override
