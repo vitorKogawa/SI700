@@ -40,6 +40,7 @@ class LoginScreenState extends State<LoginScreen> {
     }
 
     return BlocBuilder<LoginBloc, LoginState>(
+      // ignore: missing_return
       builder: (context, state) {
         if (state is LoginInitialState) {
           return loginForm();
@@ -55,7 +56,7 @@ class LoginScreenState extends State<LoginScreen> {
 
         if (state is LoginAuthenticatedState) {
           // return HomeScreen(user: state.user);
-          return ListAllUsersScreen();
+          return HomeScreen();
         }
       },
     );

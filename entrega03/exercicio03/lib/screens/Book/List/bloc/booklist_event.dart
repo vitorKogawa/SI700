@@ -6,3 +6,8 @@ abstract class BookListEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class FetchBookListEvent extends BookListEvent {
+  @override
+  List<Object> get props => [];
+}

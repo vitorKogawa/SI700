@@ -1,6 +1,5 @@
 import 'package:exercicio03/routes/AppRoutes.dart';
 import 'package:exercicio03/screens/Login/bloc/login_bloc.dart';
-import 'package:exercicio03/screens/User/ListAllUsers/bloc/userlist_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +39,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
             title: Text('Usuários'),
             subtitle: Text('Usuários Cadastrados'),
             onTap: () => {
-              BlocProvider.of<UserlistBloc>(context).add(FetchUserListEvent()),
+              // BlocProvider.of<UserlistBloc>(context).add(FetchUserListEvent()),
+              Navigator.of(context).pushNamed(AppRoutes.USER_LIST),
             },
           ),
           ListTile(

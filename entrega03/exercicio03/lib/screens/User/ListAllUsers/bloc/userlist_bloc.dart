@@ -28,7 +28,7 @@ class UserlistBloc extends Bloc<UserlistEvent, UserlistState> {
           print("nenhum usuário encontrado.");
         } else {
           yield UserListLoadedState(usersList: allUsers);
-          print("lista carregada\n$allUsers");
+          // print("lista carregada\n$allUsers");
         }
       } catch (e) {
         yield UserListErrorState();

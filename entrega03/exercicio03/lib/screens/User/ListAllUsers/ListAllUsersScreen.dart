@@ -13,6 +13,7 @@ class _ListAllUsersScreenState extends State<ListAllUsersScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UserlistBloc, UserlistState>(
+      // ignore: missing_return
       builder: (context, state) {
         if (state is UserListInitialState) {
           BlocProvider.of<UserlistBloc>(context).add(FetchUserListEvent());

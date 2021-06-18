@@ -7,7 +7,7 @@ abstract class BookListState extends Equatable {
   List<Object> get props => [];
 }
 
-class BooklistInitialState extends BookListState {
+class BookListInitialState extends BookListState {
   @override
   List<Object> get props => [];
 }
@@ -18,6 +18,15 @@ class BookListLoadingState extends BookListState {
 }
 
 class BookListLoadedState extends BookListState {
+  final List<Book> books;
+
+  BookListLoadedState({this.books});
+
+  @override
+  List<Object> get props => [books];
+}
+
+class BookListEmptyState extends BookListState {
   @override
   List<Object> get props => [];
 }
